@@ -1,12 +1,23 @@
+# Example Code
+# There is no guarantee or otherwise support for the following code.
+# It is here for demonstration purposes, and to spark ideas.
+# Running this without understanding what each part does is dangerous.
+
+# You are on your own.
+
+
 import os
 
-org = "fce29c48-522f-4984-8c7c-f9473733c67b"
-ups = "e8fe8550-1ab9-4964-8838-2b9abdccf4bf"
+# This example code utilized Terminus plugins pancackes and rsync
+
+org = "Your Org ID"
+ups = "Upstream ID"
 crt  = "site:create"
 
-sites = [["Site 1 AU", "site1-au", "au", "Autoload"],
-         ["Site 1 EU", "site1-eu", "eu", "Autoload"],
-         ["Site 2 AU", "site2-au", "eu", "Autoload"]]
+# Site Lable | Site Name | Region | Tag
+sites = [["Site 1 Label", "site1", "au", "Autoload"],
+         ["Site 1 Label EU", "site1-eu", "eu", "Autoload"],
+         ["Site 2 Label EU", "site2-au", "eu", "Autoload"]]
 
 for site in sites:
 
@@ -15,6 +26,7 @@ for site in sites:
     rgn = site[2]
     tag = site[3]
 
+    
     trmns_create = "terminus " + crt + " --org=" + org + " --region=" + rgn + "  " + nam + "  \"" + lbl + "\"  " + ups
 
     trmns_db = "terminus pc " + nam + ".dev --app=mysql < " + nam + ".sql"
