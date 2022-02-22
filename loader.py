@@ -21,10 +21,10 @@ crt  = "site:create"
 #          ["Site 2 Label EU", "site2-au", "eu", "Autoload"]]
 
 # Updated
-# Site Lable | Site Name | Region | Tag | Asset URL
-sites = [["Site 1 Label", "site1", "au", "Autoload", "https://<OLDSITE>/wp-content/uploads/assets1au.zip"],
-         ["Site 1 Label EU", "site1-eu", "eu", "Autoload", "https://<OLDSITEo/wp-content/uploads/assets1eu.zip"],
-         ["Site 2 Label EU", "site2-au", "eu", "Autoload", "https://<OLDSITE/wp-content/uploads/assets2eu.zip"]]
+# Site Lable | Site Name | Region | Tag | OLD URL | Asset Path
+sites = [["Site 1 Label", "site1", "au", "Autoload", "<OLDSITE>", "/wp-content/uploads/assets1au.zip"],
+         ["Site 1 Label EU", "site1-eu", "eu", "Autoload", "<OLDSITE>", "/wp-content/uploads/assets1eu.zip"],
+         ["Site 2 Label EU", "site2-au", "eu", "Autoload", "<OLDSITE>", "/wp-content/uploads/assets2eu.zip"]]
 
 for site in sites:
 
@@ -32,18 +32,20 @@ for site in sites:
     nam = site[1]
     rgn = site[2]
     tag = site[3]
-    ast = site[4]
+    old = site[4]
+    ast = site[5]
+
 
     
     trmns_create = "terminus " + crt + " --org=" + org + " --region=" + rgn + "  " + nam + "  \"" + lbl + "\"  " + ups
 
     trmns_db = "terminus pc " + nam + ".dev --app=mysql < " + nam + ".sql"
-    trmns_db_clean = "terminus wp " + nam + ".dev search-replace 'http://wpcu.lndo.site/' '/'"
+    trmns_db_clean = "terminus wp " + nam + ".dev search-replace " + old + " '/'"
 
     trmns_content = "terminus rsync ./" + nam + "/content/. " + nam + ".dev:code/wp-content"
 
     # this is an error: The url should not be hard coded.
-    trmns_files = "terminus import:files " + nam + ".dev " + ast + " --yes"
+    trmns_files = "terminus import:files " + nam + ".dev " + old + ast + " --yes"
 
     trmns_tag = "terminus tag:add " + nam + " " + org + " " + tag
 
