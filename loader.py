@@ -8,20 +8,20 @@
 
 import os
 
-# This example code utilized Terminus plugins pancackes and rsync
+# This example code utilized Terminus plugins pancakes and rsync
 
 org = "Your Org ID"
 ups = "Upstream ID"
 crt  = "site:create"
 
 # Originally in Demo
-# Site Lable | Site Name | Region | Tag
+# Site Label | Site Name | Region | Tag
 # sites = [["Site 1 Label", "site1", "au", "Autoload"],
 #          ["Site 1 Label EU", "site1-eu", "eu", "Autoload"],
 #          ["Site 2 Label EU", "site2-au", "eu", "Autoload"]]
 
 # Updated
-# Site Lable | Site Name | Region | Tag | OLD URL | Asset Path
+# Site Label | Site Name | Region | Tag | OLD URL | Asset Path
 sites = [["Site 1 Label", "site1", "au", "Autoload", "<OLDSITE>", "/wp-content/uploads/assets1au.zip"],
          ["Site 1 Label EU", "site1-eu", "eu", "Autoload", "<OLDSITE>", "/wp-content/uploads/assets1eu.zip"],
          ["Site 2 Label EU", "site2-au", "eu", "Autoload", "<OLDSITE>", "/wp-content/uploads/assets2eu.zip"]]
@@ -61,4 +61,4 @@ for site in sites:
     os.system(trmns_git)
     os.system(trmns_cc)
 
-
+    break
