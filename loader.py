@@ -14,10 +14,17 @@ org = "Your Org ID"
 ups = "Upstream ID"
 crt  = "site:create"
 
+# Originally in Demo
 # Site Lable | Site Name | Region | Tag
-sites = [["Site 1 Label", "site1", "au", "Autoload"],
-         ["Site 1 Label EU", "site1-eu", "eu", "Autoload"],
-         ["Site 2 Label EU", "site2-au", "eu", "Autoload"]]
+# sites = [["Site 1 Label", "site1", "au", "Autoload"],
+#          ["Site 1 Label EU", "site1-eu", "eu", "Autoload"],
+#          ["Site 2 Label EU", "site2-au", "eu", "Autoload"]]
+
+# Updated
+# Site Lable | Site Name | Region | Tag | Asset URL
+sites = [["Site 1 Label", "site1", "au", "Autoload", "https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets1au.zip"],
+         ["Site 1 Label EU", "site1-eu", "eu", "Autoload", "https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets1eu.zip"],
+         ["Site 2 Label EU", "site2-au", "eu", "Autoload", "https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets2eu.zip"]]
 
 for site in sites:
 
@@ -25,6 +32,7 @@ for site in sites:
     nam = site[1]
     rgn = site[2]
     tag = site[3]
+    ast = site[4]
 
     
     trmns_create = "terminus " + crt + " --org=" + org + " --region=" + rgn + "  " + nam + "  \"" + lbl + "\"  " + ups
@@ -33,7 +41,9 @@ for site in sites:
     trmns_db_clean = "terminus wp " + nam + ".dev search-replace 'http://wpcu.lndo.site/' '/'"
 
     trmns_content = "terminus rsync ./" + nam + "/content/. " + nam + ".dev:code/wp-content"
-    trmns_files = "terminus import:files " + nam + ".dev https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets.zip --yes"
+
+    # this is an error: The url should not be hard coded.
+    trmns_files = "terminus import:files " + nam + ".dev " + ast + " --yes"
 
     trmns_tag = "terminus tag:add " + nam + " " + org + " " + tag
 
