@@ -22,9 +22,9 @@ crt  = "site:create"
 
 # Updated
 # Site Lable | Site Name | Region | Tag | Asset URL
-sites = [["Site 1 Label", "site1", "au", "Autoload", "https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets1au.zip"],
-         ["Site 1 Label EU", "site1-eu", "eu", "Autoload", "https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets1eu.zip"],
-         ["Site 2 Label EU", "site2-au", "eu", "Autoload", "https://dev-wp-template-1.pantheonsite.io/wp-content/uploads/assets2eu.zip"]]
+sites = [["Site 1 Label", "site1", "au", "Autoload", "https://<OLDSITE>/wp-content/uploads/assets1au.zip"],
+         ["Site 1 Label EU", "site1-eu", "eu", "Autoload", "https://<OLDSITEo/wp-content/uploads/assets1eu.zip"],
+         ["Site 2 Label EU", "site2-au", "eu", "Autoload", "https://<OLDSITE/wp-content/uploads/assets2eu.zip"]]
 
 for site in sites:
 
