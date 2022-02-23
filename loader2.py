@@ -18,7 +18,7 @@ sites = [["Site 1 AU", "site1-au", "au", ["Autoload", "Australia"], "<OLD_URL>",
          ["Site 2 EU", "site2-au", "eu", ["Autoload", "Europe"], "<OLD_URL>", "<ASSETS_FILE>", "'<ABSOLUTE_PATTERN>'"]]
 
 for site in sites:
-
+    # switch print() for os.system()
     print("terminus site:create --org=" + org + " --region=" + site[2] + "  " + site[1] + "  \"" + site[0] + "\"  " + up_stream)
     print("terminus pc " + site[1] + ".dev --app=mysql < " + site[1] + ".sql")
     print("terminus wp " + site[1] + ".dev search-replace " + site[6] + " '/'")
