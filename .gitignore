@@ -1,0 +1,4 @@
+*.sql
+*.txt
+site1-au/content/*
+site1-au/files/*
