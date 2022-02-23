@@ -13,9 +13,9 @@ org = "<ORG_UUID>"
 up_stream = "<UPSTREAM_UUID>"
 
 # Site Label | Site Name | Region | Tags | OLD URL | Asset Path | Absolute Path
-sites = [["Site 1 AU", "site1-au", "au", ["Autoload", "Australia"], "<OLD_URL>", "<ASSETS_FILE>", "'<ABSOLUTE_PATTERN>'"],
-         ["Site 1 EU", "site1-eu", "eu", ["Autoload", "Europe"], "<OLD_URL>", "<ASSETS_FILE>", "'<ABSOLUTE_PATTERN>'"],
-         ["Site 2 EU", "site2-au", "eu", ["Autoload", "Europe"], "<OLD_URL>", "<ASSETS_FILE>", "'<ABSOLUTE_PATTERN>'"]]
+sites = [["Site 1 AU", "site1-au", "au", ["Autoload", "Australia"], "<OLD_URL>", "<ASSETS_FILE>", "'<REPLACE_PATTERN>'"],
+         ["Site 1 EU", "site1-eu", "eu", ["Autoload", "Europe"], "<OLD_URL>", "<ASSETS_FILE>", "'<REPLACE_PATTERN>'"],
+         ["Site 2 EU", "site2-au", "eu", ["Autoload", "Europe"], "<OLD_URL>", "<ASSETS_FILE>", "'<REPLACE_PATTERN>'"]]
 
 for site in sites:
     # switch print() for os.system()
@@ -28,5 +28,5 @@ for site in sites:
         print("terminus tag:add " + site[1] + " " + org + " " + tag)
     print("terminus connection:set " + site[1] + ".dev git --yes")
     print("terminus env:clear-cache " + site[1] + ".dev")
-
+    # remove break after testing
     break
